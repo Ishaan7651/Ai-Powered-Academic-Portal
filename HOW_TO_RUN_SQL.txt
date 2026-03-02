@@ -1,0 +1,64 @@
+========================================
+HOW TO RUN THE SQL SCRIPT
+========================================
+
+STEP 1: Open phpMyAdmin
+------------------------
+1. Open your web browser
+2. Go to: http://localhost/phpmyadmin
+3. Login with your MySQL credentials
+
+STEP 2: Select Your Database
+-----------------------------
+1. Look at the left sidebar
+2. Click on your database name (probably: u348045755_test5)
+
+STEP 3: Run the SQL Script
+---------------------------
+1. Click the "SQL" tab at the top of the page
+2. Open the file: update_departments.sql (in this folder)
+3. Copy ALL the content from that file
+4. Paste it into the SQL query box in phpMyAdmin
+5. Click the "Go" button at the bottom right
+
+STEP 4: Verify It Worked
+-------------------------
+After running the script, run these queries to verify:
+
+Query 1 - Check departments:
+SELECT * FROM departments;
+
+Query 2 - Check students have departments:
+SELECT id, user_id, department_id, current_semester FROM students;
+
+Query 3 - Check subjects have departments:
+SELECT id, subject_code, subject_name, semester, department_id FROM subjects;
+
+========================================
+EXPECTED RESULTS
+========================================
+
+Departments should show:
+- BTech AI and ML
+- BSc in Psychology  
+- BTech in Sound Engineering
+- BBA
+- MBA
+
+All students should have department_id = 2 (BSc in Psychology)
+Clinical Psychology subject should have department_id = 2
+Other subjects should have department_id = 1 (BTech AI and ML)
+
+========================================
+IF YOU GET ERRORS
+========================================
+
+Error: "Duplicate column name 'department_id'"
+Solution: This is OK! It means the column already exists. Continue with the rest of the script.
+
+Error: "Duplicate key name"
+Solution: This is OK! It means the index already exists. Continue with the rest of the script.
+
+Any other errors: Copy the error message and let me know!
+
+========================================

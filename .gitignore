@@ -1,0 +1,87 @@
+# CodeIgniter Specific
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+
+# User Uploads
+uploads/*
+!uploads/index.html
+!uploads/.htaccess
+
+# Configuration Files (contains sensitive data)
+application/config/database.php
+application/config/config.php
+
+# Keep example config files
+!application/config/database.example.php
+!application/config/config.example.php
+
+# Environment Files
+.env
+.env.local
+.env.*.local
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Composer
+/vendor/
+composer.lock
+
+# Node modules (if using npm)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Temporary Files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# PHP
+*.log
+
+# Backup Files
+*.bak
+*.backup
+*.sql.gz
+*.sql.zip
+
+# API Keys and Secrets
+*_secret.php
+*_keys.php
+
+# Session Files
+application/sessions/*
+!application/sessions/index.html
+
+# Test Files
+tests/_output/*
+tests/_support/_generated
+
+# Build Files
+/build/
+/dist/
+
+# Documentation Build
+/docs/_build/

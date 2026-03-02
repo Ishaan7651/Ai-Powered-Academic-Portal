@@ -1,0 +1,5 @@
+Options -Indexes
+deny from all
+<Files ~ "\.(pdf|ppt|pptx|xls|xlsx|csv|epub|doc|docx|txt)$">
+    allow from all
+</Files>
