@@ -1,0 +1,101 @@
+╔══════════════════════════════════════════════════════════════════╗
+║                  PUBLISH BUTTON LOCATIONS                        ║
+╚══════════════════════════════════════════════════════════════════╝
+
+All three AI generation pages have the SAME button layout:
+
+┌────────────────────────────────────────────────────────────────┐
+│                                                                │
+│  [Generated Content Preview Here]                              │
+│                                                                │
+│  Assignment/Quiz/Question Paper details...                     │
+│                                                                │
+└────────────────────────────────────────────────────────────────┘
+
+                    ↓ BUTTONS APPEAR HERE ↓
+
+┌────────────────────────────────────────────────────────────────┐
+│                                                                │
+│   [🖨️ Print]    [📤 Publish to Students]    [✓ Done]         │
+│    (Blue)           (Purple/Gradient)         (Green)          │
+│                                                                │
+└────────────────────────────────────────────────────────────────┘
+
+BUTTON DETAILS:
+═══════════════
+
+1. Print Button (Blue)
+   - Opens print dialog
+   - Always enabled after generation
+
+2. Publish to Students Button (Purple)
+   - Opens confirmation modal
+   - Only enabled after successful generation
+   - Requires subject selection
+   - Makes content visible to students
+
+3. Done Button (Green)
+   - Returns to AI Features page
+   - Always enabled
+
+PUBLISH MODAL:
+═════════════
+
+When you click "Publish to Students":
+
+┌────────────────────────────────────────────────────────────────┐
+│                                                                │
+│  📤 Publish Assignment/Quiz/Question Paper                     │
+│                                                                │
+│  Are you sure you want to publish this to students?            │
+│  Students enrolled in the selected subject will be able        │
+│  to access this content.                                       │
+│                                                                │
+│     [✓ Publish Now]        [Cancel]                           │
+│                                                                │
+└────────────────────────────────────────────────────────────────┘
+
+AFTER PUBLISHING:
+════════════════
+
+✓ Success message appears
+✓ Button changes to "Published" with checkmark
+✓ Students can now see it in their dashboard
+✓ Content appears in:
+  - Student Assignments page
+  - Student Quizzes page  
+  - Student Question Papers page
+
+IMPORTANT NOTES:
+═══════════════
+
+⚠️ The publish button will be DISABLED (grayed out) if:
+   - Generation hasn't completed yet
+   - No subject was selected
+   - JavaScript error occurred
+   - currentAssignmentId/currentPaperId/currentQuizId is not set
+
+✓ The button will be ENABLED (clickable) when:
+   - Generation completed successfully
+   - Subject is selected
+   - All required IDs are set
+
+TESTING CHECKLIST:
+═════════════════
+
+□ Fix API keys (get new Gemini keys)
+□ Restart PHP server
+□ Login as Faculty
+□ Go to AI Features
+□ Select generation type (Assignment/Quiz/Question Paper)
+□ Select a subject
+□ Upload a PDF
+□ Fill in configuration
+□ Click Generate
+□ Wait for generation to complete
+□ Look for THREE buttons at the bottom
+□ Click "Publish to Students" (purple button)
+□ Confirm in modal
+□ Check for success message
+□ Login as Student
+□ Verify content appears in student view

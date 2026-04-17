@@ -21,9 +21,11 @@ class AI_service
 
         // Multiple API keys for rotation when rate limits are hit
         $this->api_keys = [
-            'AIzaSyD7NdVJh43kZOPRQyL4ZycNawkjUnPO6Lw',
-            'AIzaSyCI6e7CWUQaBRwd9FDtKdmezAWu02E5Dss',
-            'AIzaSyB17CTojS_KE1YzQE33Tcf6aDvvjFpA4ls'
+            // 'AIzaSyCI6e7CWUQaBRwd9FDtKdmezAWu02E5Dss',
+            // 'AIzaSyAjGUgZEOR5hCOwYIyGOaPiFqcqBzq6ioY',
+            // 'AIzaSyB17CTojS_KE1YzQE33Tcf6aDvvjFpA4ls'
+            'AIzaSyCu3j5s7uzO11T_pZeF32iWJTnqzvSuzpo'
+            
         ];
 
         // Initialize with first key

@@ -263,7 +263,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <i class="fas fa-layer-group"></i>
                             <div class="meta-text">
                                 <span class="meta-label">Type</span>
-                                <span class="meta-value"><?php echo ucfirst(str_replace('_', ' ', $assignment->assignment_type)); ?></span>
+                                <span class="meta-value"><?php echo ucfirst(str_replace('_', ' ', $assignment->type)); ?></span>
                             </div>
                         </div>
                         <div class="meta-item">

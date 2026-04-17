@@ -532,14 +532,25 @@ if (!function_exists('formatFileSize')) {
             box-shadow: 0 8px 25px rgba(120, 184, 63, 0.3);
         }
 
+
         .btn-publish {
-            background: linear-gradient(135deg, var(--purple), #7c3aed);
-            color: white;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
+            color: white !important;
+            border: none !important;
         }
 
         .btn-publish:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3) !important;
+            background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+        }
+
+        .btn-publish:disabled {
+            background: #cbd5e1 !important;
+            color: #94a3b8 !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+            box-shadow: none !important;
         }
 
         .preview-panel {

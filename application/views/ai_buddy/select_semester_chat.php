@@ -211,17 +211,6 @@ if ($user_role === 'student') {
     <div class="page-header">
         <h1><i class="fas fa-comments"></i> HawkAI - Select Semester</h1>
         <p>Choose your semester to view available subjects</p>
-        <?php if (ENVIRONMENT === 'development'): ?>
-            <div style="background: #fff3cd; padding: 10px; margin: 10px 0; border-radius: 5px; font-size: 12px;">
-                <strong>Debug Info:</strong><br>
-                User ID: <?php echo $this->session->userdata('user_id'); ?><br>
-                User Role: <?php echo $user_role; ?><br>
-                Enrolled Subjects Count: <?php echo count($enrolled_subjects); ?><br>
-                <?php if (!empty($enrolled_subjects)): ?>
-                    Subjects: <?php foreach($enrolled_subjects as $s) echo $s->subject_name . ' (Sem ' . $s->semester . '), '; ?>
-                <?php endif; ?>
-            </div>
-        <?php endif; ?>
     </div>
 
     <div class="semesters-grid">

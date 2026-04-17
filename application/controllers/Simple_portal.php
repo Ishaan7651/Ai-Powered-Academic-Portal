@@ -3829,11 +3829,24 @@ class Simple_portal extends CI_Controller
     /**
      * Get published question papers for student's enrolled subjects
      */
-    private function get_published_question_papers_for_student($student_id)
+    private function get_published_question_papers_for_student($user_id)
     {
         if (!$this->db->table_exists('ai_question_papers') || !$this->db->table_exists('student_enrollments')) {
             return array();
         }
+
+        // First get the student record to get the actual student_id
+        $this->db->select('id');
+        $this->db->from('students');
+        $this->db->where('user_id', $user_id);
+        $student = $this->db->get()->row();
+
+        if (!$student) {
+            log_message('error', 'Student record not found for user_id=' . $user_id);
+            return array();
+        }
+
+        $student_id = $student->id;
 
         $this->db->select('qp.*, s.subject_code, s.subject_name');
         $this->db->from('ai_question_papers qp');
@@ -3843,17 +3856,33 @@ class Simple_portal extends CI_Controller
         $this->db->where('qp.is_published', 1);
         $this->db->order_by('qp.published_at', 'DESC');
 
-        return $this->db->get()->result();
+        $result = $this->db->get()->result();
+        log_message('info', 'Found ' . count($result) . ' published question papers for student_id=' . $student_id . ' (user_id=' . $user_id . ')');
+        
+        return $result;
     }
 
     /**
      * Get published quizzes for student's enrolled subjects
      */
-    private function get_published_quizzes_for_student($student_id)
+    private function get_published_quizzes_for_student($user_id)
     {
         if (!$this->db->table_exists('ai_quizzes') || !$this->db->table_exists('student_enrollments')) {
             return array();
         }
+
+        // First get the student record to get the actual student_id
+        $this->db->select('id');
+        $this->db->from('students');
+        $this->db->where('user_id', $user_id);
+        $student = $this->db->get()->row();
+
+        if (!$student) {
+            log_message('error', 'Student record not found for user_id=' . $user_id);
+            return array();
+        }
+
+        $student_id = $student->id;
 
         $this->db->select('q.*, s.subject_code, s.subject_name');
         $this->db->from('ai_quizzes q');
@@ -3863,17 +3892,33 @@ class Simple_portal extends CI_Controller
         $this->db->where('q.is_published', 1);
         $this->db->order_by('q.published_at', 'DESC');
 
-        return $this->db->get()->result();
+        $result = $this->db->get()->result();
+        log_message('info', 'Found ' . count($result) . ' published quizzes for student_id=' . $student_id . ' (user_id=' . $user_id . ')');
+        
+        return $result;
     }
 
     /**
      * Get published assignments for student's enrolled subjects
      */
-    private function get_published_assignments_for_student($student_id)
+    private function get_published_assignments_for_student($user_id)
     {
         if (!$this->db->table_exists('ai_assignments') || !$this->db->table_exists('student_enrollments')) {
             return array();
         }
+
+        // First get the student record to get the actual student_id
+        $this->db->select('id');
+        $this->db->from('students');
+        $this->db->where('user_id', $user_id);
+        $student = $this->db->get()->row();
+
+        if (!$student) {
+            log_message('error', 'Student record not found for user_id=' . $user_id);
+            return array();
+        }
+
+        $student_id = $student->id;
 
         $this->db->select('a.*, s.subject_code, s.subject_name');
         $this->db->from('ai_assignments a');
@@ -3883,7 +3928,10 @@ class Simple_portal extends CI_Controller
         $this->db->where('a.is_published', 1);
         $this->db->order_by('a.published_at', 'DESC');
 
-        return $this->db->get()->result();
+        $result = $this->db->get()->result();
+        log_message('info', 'Found ' . count($result) . ' published assignments for student_id=' . $student_id . ' (user_id=' . $user_id . ')');
+        
+        return $result;
     }
 
     /**

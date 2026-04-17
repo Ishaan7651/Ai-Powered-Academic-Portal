@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Publish Button Styles</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            padding: 40px;
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #1e293b;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+            color: white !important;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-publish {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important;
+            color: white !important;
+            border: none !important;
+        }
+
+        .btn-publish:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3) !important;
+            background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+        }
+
+        .btn-publish:disabled {
+            background: #cbd5e1 !important;
+            color: #94a3b8 !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #78b83f, #6ba832) !important;
+            color: white !important;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(120, 184, 63, 0.3);
+        }
+
+        .test-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .test-section h3 {
+            margin-top: 0;
+            color: #475569;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Publish Button Style Test</h1>
+
+        <div class="test-section">
+            <h3>Normal State (All Enabled)</h3>
+            <div class="action-buttons">
+                <button class="btn btn-primary">
+                    <i class="fas fa-print"></i>Print Assignment
+                </button>
+                <button class="btn btn-publish">
+                    <i class="fas fa-share-alt"></i>Publish to Students
+                </button>
+                <button class="btn btn-success">
+                    <i class="fas fa-check"></i>Done
+                </button>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>Disabled State (Publish Button Disabled)</h3>
+            <div class="action-buttons">
+                <button class="btn btn-primary">
+                    <i class="fas fa-print"></i>Print Assignment
+                </button>
+                <button class="btn btn-publish" disabled>
+                    <i class="fas fa-share-alt"></i>Publish to Students
+                </button>
+                <button class="btn btn-success">
+                    <i class="fas fa-check"></i>Done
+                </button>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>After Publishing (Button Changed)</h3>
+            <div class="action-buttons">
+                <button class="btn btn-primary">
+                    <i class="fas fa-print"></i>Print Assignment
+                </button>
+                <button class="btn btn-publish" style="background: #10b981 !important;">
+                    <i class="fas fa-check-circle"></i>Published
+                </button>
+                <button class="btn btn-success">
+                    <i class="fas fa-check"></i>Done
+                </button>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; padding: 20px; background: #fef3c7; border-radius: 8px; border-left: 4px solid #f59e0b;">
+            <h3 style="margin-top: 0; color: #92400e;">✅ Expected Behavior:</h3>
+            <ul style="color: #78350f;">
+                <li><strong>Print Button:</strong> Blue gradient background</li>
+                <li><strong>Publish Button:</strong> Purple gradient background (visible!)</li>
+                <li><strong>Done Button:</strong> Green gradient background</li>
+                <li><strong>Hover:</strong> All buttons should lift up slightly with shadow</li>
+                <li><strong>Disabled:</strong> Gray background, no hover effect</li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 20px; padding: 20px; background: #dbeafe; border-radius: 8px; border-left: 4px solid #3b82f6;">
+            <h3 style="margin-top: 0; color: #1e40af;">📝 Instructions:</h3>
+            <ol style="color: #1e3a8a;">
+                <li>Open this file in your browser</li>
+                <li>Verify all three buttons are visible</li>
+                <li>Hover over each button to test animations</li>
+                <li>If publish button is white/invisible, there's a CSS conflict</li>
+                <li>Clear browser cache and refresh the actual page</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

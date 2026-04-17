@@ -921,7 +921,7 @@ class AI_buddy extends CI_Controller
                     'resource_id' => $resource_ids[0], // Store first resource ID for compatibility
                     'subject_id' => $subject_id,
                     'title' => $title,
-                    'assignment_type' => $assignment_type,
+                    'type' => $assignment_type,
                     'difficulty' => $difficulty,
                     'word_count' => $word_count,
                     'due_weeks' => $due_weeks,

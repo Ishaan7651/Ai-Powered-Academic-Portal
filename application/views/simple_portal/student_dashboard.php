@@ -20,6 +20,7 @@ try {
     $current_semester = isset($student_data['current_semester']) ? $student_data['current_semester'] : 1;
     $enrollment_year = isset($student_data['enrollment_year']) ? $student_data['enrollment_year'] : date('Y');
     $student_id = isset($student_data['student_id']) ? $student_data['student_id'] : 'N/A';
+    $student_db_id = isset($student_data['id']) ? $student_data['id'] : null; // This is the actual database ID for enrollments
     
     // Count total resources available for student's semester and previous semesters
     $total_resources = 0;
@@ -44,15 +45,16 @@ try {
     $total_quizzes = 0;
     $attempted_quizzes = 0;
     
-    if ($ci->db->table_exists('ai_quizzes') && $ci->db->table_exists('subjects') && $ci->db->table_exists('quiz_attempts')) {
-        // Count total published quizzes for student's current semester
+    if ($ci->db->table_exists('ai_quizzes') && $ci->db->table_exists('subjects') && $ci->db->table_exists('student_enrollments') && $student_db_id) {
+        // Count total published quizzes for student's enrolled subjects
         $total_quizzes_query = $ci->db->query("
             SELECT COUNT(q.id) as count
             FROM ai_quizzes q
-            LEFT JOIN subjects s ON q.subject_id = s.id
+            JOIN subjects s ON q.subject_id = s.id
+            JOIN student_enrollments se ON q.subject_id = se.subject_id
             WHERE q.is_published = 1 
-            AND (s.semester <= ? OR q.subject_id IS NULL)
-        ", [$current_semester]);
+            AND se.student_id = ?
+        ", [$student_db_id]);
         $total_quizzes = $total_quizzes_query->row()->count;
         
         // Count unique quizzes attempted by student
@@ -60,10 +62,11 @@ try {
             SELECT COUNT(DISTINCT qa.quiz_id) as count
             FROM quiz_attempts qa
             JOIN ai_quizzes q ON qa.quiz_id = q.id
-            LEFT JOIN subjects s ON q.subject_id = s.id
+            JOIN subjects s ON q.subject_id = s.id
+            JOIN student_enrollments se ON q.subject_id = se.subject_id
             WHERE qa.student_id = ? 
-            AND (s.semester <= ? OR q.subject_id IS NULL)
-        ", [$user_id, $current_semester]);
+            AND se.student_id = ?
+        ", [$user_id, $student_db_id]);
         $attempted_quizzes = $attempted_query->row()->count;
         
         if ($total_quizzes > 0) {
